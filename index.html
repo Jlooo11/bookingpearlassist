@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PearlAssist | Service Premium d'Accueil Aéroportuaire à Abidjan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #0A2463;
+            --vivid-blue: #3E92CC;
+            --copper: #D8315B;
+            --light-grey: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--dark-blue);
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--copper);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            text-decoration: none;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--copper);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after, .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 36, 99, 0.9), rgba(10, 36, 99, 0.9)), 
+                        url('https://images.pexels.com/photos/2026324/pexels-photo-2026324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* Boutons */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--copper);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #c02a4f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+            color: var(--dark-blue);
+        }
+
+        /* Features */
+        .features {
+            background-color: var(--light-grey);
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--copper);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        /* Services */
+        .services-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--light-grey);
+            border-radius: 10px;
+            padding: 2.5rem;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--vivid-blue);
+        }
+
+        .service-card.featured {
+            border-top-color: var(--copper);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--vivid-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card.featured .service-icon {
+            color: var(--copper);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-blue);
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-card ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .service-card ul li:before {
+            content: "✓";
+            color: var(--vivid-blue);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark-blue);
+            margin: 1.5rem 0;
+        }
+
+        .service-button {
+            display: block;
+            text-align: center;
+            background-color: var(--vivid-blue);
+            color: var(--white);
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .service-button:hover {
+            background-color: #3688b8;
+        }
+
+        .service-card.featured .service-button {
+            background-color: var(--copper);
+        }
+
+        .service-card.featured .service-button:hover {
+            background-color: #c02a4f;
+        }
+
+        /* Paiement sécurisé */
+        .payment-section {
+            background-color: var(--light-grey);
+        }
+
+        .payment-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+
+        .form-group input, 
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .security-badge {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .secure-info {
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .secure-info i {
+            color: var(--copper);
+            margin-right: 5px;
+        }
+
+        .why-secure {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .why-secure h4 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .why-secure ul {
+            list-style: none;
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .why-secure li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .why-secure li:before {
+            content: "✓";
+            color: var(--copper);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .pay-button {
+            display: block;
+            width: 100%;
+            background-color: var(--copper);
+            color: var(--white);
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .pay-button:hover {
+            background-color: #c02a4f;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .modal-button.primary {
+            background-color: var(--copper);
+            color: white;
+        }
+
+        .modal-button.secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        /* Prix détaillés */
+        .pricing-info {
+            background-color: #f0f8ff;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .pricing-info h5 {
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Baggage info */
+        .baggage-info {
+            background-color: #fff3cd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            border-left: 4px solid #ffc107;
+        }
+
+        .baggage-info h5 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Date warning */
+        .date-warning {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            border-left: 4px solid #dc3545;
+            display: none;
+        }
+
+        /* Cancellation section */
+        .cancellation-section {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 3rem;
+        }
+
+        .cancellation-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cancel-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+
+        /* Témoignages */
+        .testimonials-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background-color: var(--light-grey);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 400px;
+            transition: all 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .testimonial .client-name {
+            font-weight: 600;
+            color: var(--dark-blue);
+            text-align: center;
+        }
+
+        /* Contact */
+        .contact {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .contact h2 {
+            color: var(--white);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--copper);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--copper);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+           background-color: white;
+           color: #333;
+           text-align: center;
+           padding: 2rem 5%;
+           border-top: 1px solid #eee;
+        }
+
+        .developer-credit {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           margin-top: 1rem;
+           gap: 0.5rem;
+        }
+
+        .developer-credit p {
+           margin: 0;
+           color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .burger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-blue);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .feature-card, .service-card {
+                min-width: 100%;
+            }
+
+            .payment-container, .contact-container {
+                flex-direction: column;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .wave-button {
+    background-color: #0A2463 !important;
+}
+
+.wave-button:hover {
+    background-color: #1a346d !important;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                PearlAssist
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#paiement">Réservation</a></li>
+                <li><a href="#annulation">Annulation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content fade-in">
+            <h1>Notre service exclusif <br>PEARL ASSIST</h1>
+            <p>VOTRE EXPÉRIENCE AÉROPORTUAIRE VERS DE NOUVEAUX SOMMETS À L'AÉROPORT FÉLIX HOUPHOUËT-BOIGNY D'ABIDJAN.</p>
+            <div class="cta-buttons">
+                <a href="#paiement" class="cta-button">Réserver maintenant</a>
+                <a href="#services" class="cta-button secondary-button">Découvrir nos services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-title">
+            <h2>Pourquoi choisir PearlAssist ?</h2>
+            <p>Notre service premium fait la différence</p>
+        </div>
+        <div class="features-container">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Gain de temps</h3>
+                <p>Évitez les files d'attente interminables et les formalités administratives complexes.</p>
+            </div>
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Assistance VIP</h3>
+                <p>Un agent dédié vous accompagne pas à pas dès la sortie de l'avion.</p>
+            </div>
+            <div class="feature-card fade-in delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Sécurité totale</h3>
+                <p>Paiements 100% sécurisés et données personnelles protégées.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Nos Services Premium</h2>
+            <p>Choisissez l'option qui correspond à vos besoins</p>
+        </div>
+        <div class="services-container">
+            <!-- Meet & Assist Standard -->
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>Meet & Assist Standard</h3>
+                <p><strong>Type de service : Départ ou Arrivée</strong></p>
+                <ul>
+                    <li>Service d'accueil à l'arrivée ou au départ</li>
+                    <li>Assistance aux formalités</li>
+                </ul>
+                <div class="price">50.000 FCFA</div>
+                <button class="service-button" onclick="selectService('standard', 'Meet & Assist Standard', 50000)">sélectionner</button>
+            </div>
+
+            <!-- Meet & Assist Plus Arrivée -->
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-plane-arrival"></i>
+                </div>
+                <h3>Meet & Assist Plus Arrivée</h3>
+                <ul>
+                    <li>Service assistance</li>
+                    <li>Livraison de bagages (maxi 3 bags)</li>
+                    <li><small style="color: red;">N.B: Bagages supplémentaires: 5000 FCFA</small></li>
+                </ul>
+                <div class="price">70.000 FCFA</div>
+                <button class="service-button" onclick="selectService('plus-arrivee', 'Meet & Assist Plus Arrivée', 70000)">sélectionner</button>
+            </div>
+
+            <!-- Meet & Assist Plus Départ -->
+            <div class="service-card featured fade-in delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-plane-departure"></i>
+                </div>
+                <h3>Meet & Assist Plus Départ</h3>
+                <p><strong>Type de service : Accès salon inclus</strong></p>
+                <ul>
+                    <li>Service assistance</li>
+                    <li>Accès salon VIP</li>
+                </ul>
+                <div class="price">80.000 FCFA</div>
+                <button class="service-button" onclick="selectService('plus-depart', 'Meet & Assist Plus Départ', 80000)">sélectionner</button>
+            </div>
+
+            <!-- Meet & Assist Package -->
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-suitcase"></i>
+                </div>
+                <h3>Meet & Assist Package</h3>
+                <p><strong>Type de service: Arrivée & Départ Package</strong></p>
+                <ul>
+                    <li>Service assistance</li>
+                    <li>Combinaison arrivée + départ</li>
+                </ul>
+                <div class="price">100.000 FCFA</div>
+                <button class="service-button" onclick="selectService('package', 'Meet & Assist Package', 100000)">sélectionner</button>
+            </div>
+
+            <!-- Meet & Assist VIP -->
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Meet & Assist VIP</h3>
+                <ul>
+                    <li>Service assistance départ</li>
+                    <li>Accès salon VIP</li>
+                    <li>Service assistance arrivée</li>
+                    <li>Livraison bagages</li>
+                </ul>
+                <div class="price">150.000 FCFA</div>
+                <button class="service-button" onclick="selectService('vip', 'Meet & Assist VIP', 150000)">sélectionner</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Ils nous ont fait confiance</h2>
+            <p>Découvrez ce que disent nos clients satisfaits</p>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonial fade-in">
+                <p>"Service exceptionnel ! Mon hotesse m'a aidé à effectuer toutes les formalités en moins de 10 minutes. Un vrai gain de temps et de sérénité."</p>
+                <div class="client-name">Jean K., Directeur Commercial</div>
+            </div>
+            <div class="testimonial fade-in delay-1">
+                <p>"Voyager seule me stressait toujours, mais avec PearlAssist, je me sens en sécurité et accompagnée dès mon arrivée. Mon hotesse était d'une gentillesse et d'un professionnalisme remarquables."</p>
+                <div class="client-name">Aïcha T., Entrepreneure</div>
+            </div>
+            <div class="testimonial fade-in delay-2">
+                <p>"Le service VIP rend le voyage. Le salon privé m'a permis de me détendre après un long vol avant ma réunion importante. L'agent a même aidé avec mes documents professionnels."</p>
+                <div class="client-name">Marc D., Investisseur</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paiement Sécurisé Section -->
+    <section class="payment-section" id="paiement">
+        <div class="section-title">
+            <h2>Réservation Sécurisée</h2>
+            <p>Effectuez votre réservation en toute confiance</p>
+        </div>
+
+        <div class="why-secure fade-in">
+            <h4>Pourquoi nous faire confiance ?</h4>
+            <ul>
+                <li>Paiements cryptés de bout en bout</li>
+                <li>Aucune donnée bancaire stockée</li>
+                <li>Certifié PCI DSS niveau 1</li>
+                <li>Support client 24/7</li>
+                <li>Garantie de remboursement sous 24h</li>
+                <li>Partenaire officiel de l'aéroport d'Abidjan</li>
+            </ul>
+        </div>
+
+        <div class="payment-container">
+            <div class="payment-form fade-in">
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="service">Service choisi *</label>
+                        <select id="service" name="service" required>
+                            <option value="">-- Sélectionnez un service --</option>
+                            <option value="standard" data-price="50000">Meet & Assist Standard - 50.000 FCFA</option>
+                            <option value="plus-arrivee" data-price="70000">Meet & Assist Plus Arrivée - 70.000 FCFA</option>
+                            <option value="plus-depart" data-price="80000">Meet & Assist Plus Départ - 80.000 FCFA</option>
+                            <option value="package" data-price="100000">Meet & Assist Package - 100.000 FCFA</option>
+                            <option value="vip" data-price="150000">Meet & Assist VIP - 150.000 FCFA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adults">Nombre d'adultes *</label>
+                            <input type="number" id="adults" name="adults" min="1" max="10" value="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="children">Nombre d'enfants (2-12 ans)</label>
+                            <input type="number" id="children" name="children" min="0" max="10" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="baggage">Nombre de bagages *</label>
+                        <input type="number" id="baggage" name="baggage" min="0" max="20" value="1" required>
+                        <small style="color: #666;">Inclus dans le service : jusqu'à 3 bagages. Au-delà : 5.000 FCFA par bagage supplémentaire</small>
+                    </div>
+
+                    <div class="baggage-info" id="baggageInfo" style="display: none;">
+                        <h5><i class="fas fa-suitcase"></i> Frais de bagages supplémentaires</h5>
+                        <p id="baggageDetails"></p>
+                    </div>
+
+                    <div class="pricing-info">
+                        <h5>Tarification :</h5>
+                        <p>• Adultes : Prix du service sélectionné</p>
+                        <p>• Enfants (2-12 ans) : 25.000 FCFA par enfant</p>
+                        <p>• Bagages supplémentaires (au-delà de 3) : 5.000 FCFA par bagage</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date de service *</label>
+                        <input type="date" id="date" name="date" required> 
+                    </div>
+
+                    <div class="date-warning" id="dateWarning">
+                        <strong><i class="fas fa-exclamation-triangle"></i> Attention !</strong>
+                        <p>Les réservations doivent être effectuées au moins 24h à l'avance. Veuillez sélectionner une date ultérieure.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="flight">Numéro de vol (si applicable)</label>
+                        <input type="text" id="flight" name="flight" placeholder="Ex: AF 778">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Téléphone *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+225 XX XX XX XX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Remarques supplémentaires</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Informations complémentaires..."></textarea>
+                    </div>
+
+                    <div class="security-badges">
+                        <div class="security-badge">SSL Sécurisé</div>
+                        <div class="security-badge">PCI DSS</div>
+                        <div class="security-badge">3D Secure</div>
+                    </div>
+
+                    <div id="totalAmount" style="text-align: center; font-size: 1.2rem; font-weight: bold; color: var(--dark-blue); margin: 1rem 0;">
+                        Total: 0 FCFA
+                    </div>
+
+                    <button type="submit" class="pay-button" id="submitButton">
+                        <i class="fas fa-lock"></i> Réserver et Payer
+                    </button>
+
+                    <p class="secure-info">
+                        <i class="fas fa-shield-alt"></i> Vos données sont protégées par un cryptage SSL 256-bit. Nous ne stockons jamais vos informations de paiement.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Annulation -->
+    <section class="payment-section" id="annulation">
+        <div class="section-title">
+            <h2>Annuler une Réservation</h2>
+            <p>Annulez votre réservation en saisissant votre numéro de réservation</p>
+        </div>
+
+        <div class="cancellation-section fade-in">
+            <div class="cancellation-form">
+                <h4 style="color: var(--dark-blue); margin-bottom: 1.5rem; text-align: center;">
+                    <i class="fas fa-times-circle"></i> Demande d'Annulation
+                </h4>
+                
+                <form id="cancellationForm">
+                    <div class="form-group">
+                        <label for="reservationNumber">Numéro de réservation *</label>
+                        <input type="text" id="reservationNumber" name="reservationNumber" placeholder="Ex: PA-2025-001234" required>
+                        <small style="color: #666;">Vous trouverez ce numéro dans l'email de confirmation de votre réservation</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cancellationEmail">Email de confirmation *</label>
+                        <input type="email" id="cancellationEmail" name="cancellationEmail" placeholder="Email utilisé lors de la réservation" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cancellationReason">Motif d'annulation</label>
+                        <select id="cancellationReason" name="cancellationReason">
+                            <option value="">-- Sélectionnez un motif --</option>
+                            <option value="changement-programme">Changement de programme</option>
+                            <option value="annulation-voyage">Annulation du voyage</option>
+                            <option value="probleme-sante">Problème de santé</option>
+                            <option value="urgence-familiale">Urgence familiale</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cancellationDetails">Détails supplémentaires</label>
+                        <textarea id="cancellationDetails" name="cancellationDetails" rows="3" placeholder="Précisez votre demande..."></textarea>
+                    </div>
+
+                    <div style="background-color: #fff3cd; padding: 1rem; border-radius: 5px; margin-bottom: 1.5rem; border-left: 4px solid #ffc107;">
+                        <h5 style="color: #856404; margin-bottom: 0.5rem;">
+                            <i class="fas fa-info-circle"></i> Conditions d'annulation
+                        </h5>
+                        <ul style="color: #856404; margin: 0; padding-left: 1.5rem;">
+                            <li>Annulation gratuite jusqu'à 24h avant le service</li>
+                            <li>Annulation entre 12h et 24h : frais de 50%</li>
+                            <li>Annulation moins de 12h : frais de 100%</li>
+                            <li>Remboursement sous 5-7 jours ouvrés</li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="cancel-button">
+                        <i class="fas fa-times"></i> Demander l'Annulation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contactez-nous</h2>
+            <p style="color: rgba(255, 255, 255, 0.8);">Nous sommes à votre disposition pour toute question</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h3>Nos coordonnées</h3>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Aéroport Félix Houphouët-Boigny, Terminal 1, Zone Arrivées, Abidjan, Côte d'Ivoire</span>
+                </p>
+                <p>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+225 05 46 01 80 00</span>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <span>abj.vip@menziesaviation.com</span>
+                </p>
+                <p>
+                    <i class="fas fa-clock"></i>
+                    <span>Disponible 24h/24, 7j/7</span>
+                </p>
+
+                <h3 style="margin-top: 2rem;">Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: white; color: #333;">
+        <div class="footer-bottom">
+            <p style="color: #333;">&copy; 2025 PearlAssist. Tous droits réservés.</p>
+            <div class="developer-credit">
+                <p>Powered by</p>
+                <span style="margin-left: 10px; font-weight: bold; color: var(--copper);"> <img src="Image/Logo_Bloow-removebg-preview (1) copie.png" alt=""></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de confirmation -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirmez votre réservation</h3>
+            <div id="confirmationDetails"></div>
+            <div class="modal-buttons">
+                <button id="confirmButton" class="modal-button primary">Confirmer et Payer</button>
+                <button id="cancelButton" class="modal-button secondary">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentFormData = {};
+        const CHILD_PRICE = 25000; // Prix enfant 2-12 ans
+        const EXTRA_BAGGAGE_PRICE = 5000; // Prix par bagage supplémentaire
+        const FREE_BAGGAGE_LIMIT = 3; // Nombre de bagages inclus
+
+        // Mapping des montants aux liens de paiement spécifiques
+        const PAYMENT_LINKS = {
+            50000: 'https://pay.jeko.africa/pl/d1542dc1-48cb-4643-b30c-9a228b9ab186',
+            70000: 'https://pay.jeko.africa/pl/6237c275-a7be-4e05-8e7b-9bf992f81b6e',
+            80000: 'https://pay.jeko.africa/pl/c0b6f465-a2e1-453a-becd-34ed7306d95b',
+            100000: 'https://pay.jeko.africa/pl/133fb48e-2d53-44d3-bff8-3fe63a57411a',
+            150000: 'https://pay.jeko.africa/pl/0e3617aa-d1ac-4f77-9683-d4495c9ae6ac'
+        };
+
+        // Fonction pour générer un numéro de réservation unique
+        function generateReservationNumber() {
+            const year = new Date().getFullYear();
+            const timestamp = Date.now().toString().slice(-6);
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return `PA-${year}-${timestamp}${random}`;
+        }
+
+        // Fonction pour obtenir le lien de paiement approprié
+        function getPaymentLink(totalAmount) {
+            if (PAYMENT_LINKS[totalAmount]) {
+                return PAYMENT_LINKS[totalAmount];
+            }
+            return `https://pay.jeko.africa/pl/aea1fc06-01f1-446e-8600-5e73115c5b20?amount=${totalAmount}`;
+        }
+
+
+        // Fonction pour valider la date (au moins 24h à l'avance)
+        function validateDate(selectedDate) {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const selected = new Date(selectedDate);
+            selected.setHours(0, 0, 0, 0);
+            
+            return selected >= tomorrow;
+        }
+
+        // Menu burger pour mobile
+        document.querySelector('.burger').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+
+        // Animation de la navigation lors du défilement
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '1rem 5%';
+            } else {
+                header.style.padding = '1.5rem 5%';
+            }
+        });
+
+        // Fonction pour sélectionner un service depuis les boutons
+        function selectService(serviceValue, serviceText, price) {
+            document.getElementById('paiement').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                const serviceSelect = document.getElementById('service');
+                serviceSelect.value = serviceValue;
+                serviceSelect.dispatchEvent(new Event('change'));
+                
+                serviceSelect.style.border = '2px solid var(--copper)';
+                setTimeout(() => {
+                    serviceSelect.style.border = '1px solid #ddd';
+                }, 2000);
+            }, 800);
+        }
+
+        // Calculer le total avec bagages
+        function calculateTotal() {
+            const serviceSelect = document.getElementById('service');
+            const adultsInput = document.getElementById('adults');
+            const childrenInput = document.getElementById('children');
+            const baggageInput = document.getElementById('baggage');
+            const totalDiv = document.getElementById('totalAmount');
+            const baggageInfo = document.getElementById('baggageInfo');
+            const baggageDetails = document.getElementById('baggageDetails');
+            
+            if (serviceSelect.value && adultsInput.value) {
+                const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+                let servicePrice = parseInt(selectedOption.dataset.price) || 0;
+                let adults = parseInt(adultsInput.value) || 1;
+                let children = parseInt(childrenInput.value) || 0;
+                let baggage = parseInt(baggageInput.value) || 0;
+                
+                // Calcul des frais de bagages supplémentaires
+                let extraBaggage = Math.max(0, baggage - FREE_BAGGAGE_LIMIT);
+                let baggageFees = extraBaggage * EXTRA_BAGGAGE_PRICE;
+                
+                // Affichage des informations sur les bagages supplémentaires
+                if (extraBaggage > 0) {
+                    baggageInfo.style.display = 'block';
+                    baggageDetails.textContent = `${extraBaggage} bagage(s) supplémentaire(s) × ${EXTRA_BAGGAGE_PRICE.toLocaleString()} FCFA = ${baggageFees.toLocaleString()} FCFA`;
+                } else {
+                    baggageInfo.style.display = 'none';
+                }
+                
+                // Calcul du total
+                let total = servicePrice * adults + (CHILD_PRICE * children) + baggageFees;
+                
+                let breakdown = `
+                    <div style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #666;">
+                        ${adults} adulte(s) × ${servicePrice.toLocaleString()} FCFA = ${(servicePrice * adults).toLocaleString()} FCFA
+                        ${children > 0 ? `<br>${children} enfant(s) × ${CHILD_PRICE.toLocaleString()} FCFA = ${(CHILD_PRICE * children).toLocaleString()} FCFA` : ''}
+                        ${baggageFees > 0 ? `<br>${extraBaggage} bagage(s) supplémentaire(s) × ${EXTRA_BAGGAGE_PRICE.toLocaleString()} FCFA = ${baggageFees.toLocaleString()} FCFA` : ''}
+                    </div>
+                    <div style="font-size: 1.2rem; font-weight: bold; color: var(--dark-blue);">
+                        Total: ${total.toLocaleString()} FCFA
+                    </div>
+                `;
+                
+                totalDiv.innerHTML = breakdown;
+            } else {
+                totalDiv.textContent = 'Total: 0 FCFA';
+                baggageInfo.style.display = 'none';
+            }
+        }
+
+        // Validation de la date en temps réel
+        function validateDateInput() {
+            const dateInput = document.getElementById('date');
+            const dateWarning = document.getElementById('dateWarning');
+            const submitButton = document.getElementById('submitButton');
+            
+            if (dateInput.value) {
+                if (!validateDate(dateInput.value)) {
+                    dateWarning.style.display = 'block';
+                    submitButton.disabled = true;
+                    submitButton.style.opacity = '0.5';
+                    submitButton.style.cursor = 'not-allowed';
+                } else {
+                    dateWarning.style.display = 'none';
+                    submitButton.disabled = false;
+                    submitButton.style.opacity = '1';
+                    submitButton.style.cursor = 'pointer';
+                }
+            }
+        }
+
+        // Écouter les changements pour recalculer le total
+        document.getElementById('service').addEventListener('change', calculateTotal);
+        document.getElementById('adults').addEventListener('input', calculateTotal);
+        document.getElementById('children').addEventListener('input', calculateTotal);
+        document.getElementById('baggage').addEventListener('input', calculateTotal);
+        document.getElementById('date').addEventListener('change', validateDateInput);
+
+        // Initialiser la date minimum à demain
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('date').min = tomorrow.toISOString().split('T')[0];
+
+        // Fonction pour afficher la modal de confirmation
+        function showConfirmationModal() {
+            const modal = document.getElementById('confirmationModal');
+            const details = document.getElementById('confirmationDetails');
+            
+            const extraBaggage = Math.max(0, currentFormData.baggage - FREE_BAGGAGE_LIMIT);
+            const baggageFees = extraBaggage * EXTRA_BAGGAGE_PRICE;
+            
+            details.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <strong>Numéro de réservation:</strong> ${currentFormData.reservationNumber}<br>
+                    <strong>Service:</strong> ${currentFormData.serviceText.split(' - ')[0]}<br>
+                    <strong>Adultes:</strong> ${currentFormData.adults}<br>
+                    <strong>Enfants:</strong> ${currentFormData.children}<br>
+                    <strong>Bagages:</strong> ${currentFormData.baggage} ${extraBaggage > 0 ? `(+${extraBaggage} supplémentaire(s))` : ''}<br>
+                    <strong>Date:</strong> ${new Date(currentFormData.date).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}<br>
+                    ${currentFormData.flight ? `<strong>Vol:</strong> ${currentFormData.flight}<br>` : ''}
+                    <strong>Nom:</strong> ${currentFormData.name}<br>
+                    <strong>Email:</strong> ${currentFormData.email}<br>
+                    <strong>Téléphone:</strong> ${currentFormData.phone}<br>
+                    ${currentFormData.additionalNotes ? `<strong>Remarques:</strong> ${currentFormData.additionalNotes}<br>` : ''}
+                    <hr style="margin: 1rem 0;">
+                    <strong>Total:</strong> ${currentFormData.total.toLocaleString()} FCFA
+                </div>
+                <p>Confirmez-vous ces informations ?</p>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        // Gestion du formulaire de paiement
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const service = document.getElementById('service').value;
+            const adults = document.getElementById('adults').value;
+            const children = document.getElementById('children').value;
+            const baggage = document.getElementById('baggage').value;
+            const date = document.getElementById('date').value;
+            const flight = document.getElementById('flight').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const notes = document.getElementById('notes').value;
+            
+            if (!service || !adults || !baggage || !date || !name || !email || !phone) {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            if (!validateDate(date)) {
+                alert('La date sélectionnée doit être au moins 24h à l\'avance');
+                return;
+            }
+
+            const serviceSelect = document.getElementById('service');
+            const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+            const servicePrice = parseInt(selectedOption.dataset.price) || 0;
+            const extraBaggage = Math.max(0, parseInt(baggage) - FREE_BAGGAGE_LIMIT);
+            const baggageFees = extraBaggage * EXTRA_BAGGAGE_PRICE;
+            const total = servicePrice * parseInt(adults) + (CHILD_PRICE * parseInt(children)) + baggageFees;
+
+            currentFormData = {
+                reservationNumber: generateReservationNumber(),
+                service,
+                serviceText: selectedOption.text,
+                adults,
+                children,
+                baggage,
+                extraBaggage,
+                baggageFees,
+                date,
+                flight,
+                name,
+                email,
+                phone,
+                total,
+                childPrice: CHILD_PRICE,
+                additionalNotes: notes
+            };
+
+            showConfirmationModal();
+        });
+
+        // Gestion du formulaire d'annulation
+        document.getElementById('cancellationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const reservationNumber = document.getElementById('reservationNumber').value;
+            const email = document.getElementById('cancellationEmail').value;
+            const reason = document.getElementById('cancellationReason').value;
+            const details = document.getElementById('cancellationDetails').value;
+            
+            if (!reservationNumber || !email) {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            const cancellationData = {
+                reservationNumber,
+                email,
+                reason,
+                details,
+                requestDate: new Date().toISOString()
+            };
+
+            // Envoyer la demande d'annulation
+            fetch('http://localhost:5000/cancel-reservation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(cancellationData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Votre demande d\'annulation a été envoyée avec succès. Vous recevrez une confirmation par email sous peu.');
+                    document.getElementById('cancellationForm').reset();
+                } else {
+                    alert('Erreur lors de l\'envoi de la demande d\'annulation: ' + result.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                alert('Erreur de connexion. Veuillez réessayer plus tard.');
+            });
+        });
+
+        // Gestion des boutons de la modal
+        document.getElementById('confirmButton').addEventListener('click', function() {
+            localStorage.setItem('reservationData', JSON.stringify(currentFormData));
+            const paymentUrl = getPaymentLink(currentFormData.total);
+            
+            console.log('Redirection vers:', paymentUrl);
+            console.log('Numéro de réservation:', currentFormData.reservationNumber);
+            console.log('Montant total:', currentFormData.total);
+            
+            window.location.href = paymentUrl;
+        });
+
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            document.getElementById('confirmationModal').style.display = 'none';
+        });
+
+        // Fermer la modal en cliquant à l'extérieur
+        document.getElementById('confirmationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // Vérifier si on revient de la page de paiement
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentStatus = urlParams.get('payment');
+            const amountPaid = urlParams.get('amount');
+            
+            if (paymentStatus === 'success') {
+                const reservationData = localStorage.getItem('reservationData');
+                if (reservationData) {
+                    const data = JSON.parse(reservationData);
+                    
+                    if (amountPaid && parseInt(amountPaid) !== data.total) {
+                        alert('Attention : Le montant payé (' + parseInt(amountPaid).toLocaleString() + 
+                              ' FCFA) ne correspond pas au montant initial (' + 
+                              data.total.toLocaleString() + ' FCFA). Veuillez contacter notre service client.');
+                    }
+                    
+                    fetch('http://localhost:5000/send-reservation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.success) {
+                            alert(`Paiement confirmé ! Votre numéro de réservation est ${data.reservationNumber}. Un email de confirmation a été envoyé à ${data.email}`);
+                            localStorage.removeItem('reservationData');
+                            window.history.replaceState({}, document.title, window.location.pathname);
+                        } else {
+                            alert('Erreur lors de l\'envoi de l\'email de confirmation. Veuillez contacter notre service client.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        alert('Erreur de connexion. Veuillez vérifier que le serveur est démarré.');
+                    });
+                }
+            }
+        });
+
+        // Animation au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                fadeElements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
